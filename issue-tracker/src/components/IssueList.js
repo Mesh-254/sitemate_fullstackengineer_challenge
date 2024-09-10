@@ -103,39 +103,43 @@ const IssueList = () => {
             </div>
             <ol className="list-decimal space-y-4">
                 {issues.map((issue, index) => (
-                    <li key={index} className="flex justify-between items-start">
-                        <div className="text-lg">
-                            {editingIssueId === index ? (
-                                <>
-                                    <input
-                                        className="p-2 border border-gray-300 rounded-md"
-                                        type="text"
-                                        placeholder="Title"
-                                        value={updatedIssue.title}
-                                        onChange={(e) => setUpdatedIssue({ ...updatedIssue, title: e.target.value })}
-                                    />
-                                    <input
-                                        className="p-2 border border-gray-300 rounded-md mt-2"
-                                        type="text"
-                                        placeholder="Description"
-                                        value={updatedIssue.description}
-                                        onChange={(e) => setUpdatedIssue({ ...updatedIssue, description: e.target.value })}
-                                    />
-                                    <button
-                                        className="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600 mt-2"
-                                        onClick={() => updateIssue(index)}
-                                    >
-                                        Save
-                                    </button>
-                                </>
-                            ) : (
-                                <>
-                                    <h3 className="font-bold">Title:</h3>{issue.title}
-                                    <h3 className="font-bold mt-2">Description:</h3>{issue.description}
-                                </>
-                            )}
+                    <li key={index} className="flex justify-between items-start w-full border-b border-gray-300 pb-4 mb-4 last:border-b-0">
+                        <div className="flex flex-col w-3/4 max-w-md overflow-x-auto">
+                            <div className="text-lg">
+                                {editingIssueId === index ? (
+                                    <>
+                                        <input
+                                            className="p-2 border border-gray-300 rounded-md w-full"
+                                            type="text"
+                                            placeholder="Title"
+                                            value={updatedIssue.title}
+                                            onChange={(e) => setUpdatedIssue({ ...updatedIssue, title: e.target.value })}
+                                        />
+                                        <input
+                                            className="p-2 border border-gray-300 rounded-md mt-2 w-full"
+                                            type="text"
+                                            placeholder="Description"
+                                            value={updatedIssue.description}
+                                            onChange={(e) => setUpdatedIssue({ ...updatedIssue, description: e.target.value })}
+                                        />
+                                        <button
+                                            className="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600 mt-2"
+                                            onClick={() => updateIssue(index)}
+                                        >
+                                            Save
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <h3 className="font-bold">Title:</h3>
+                                        <p>{issue.title}</p>
+                                        <h3 className="font-bold mt-2">Description:</h3>
+                                        <p>{issue.description}</p>
+                                    </>
+                                )}
+                            </div>
                         </div>
-                        <div className="space-x-2">
+                        <div className="space-x-2 w-1/4 flex justify-end items-center">
                             <button
                                 className="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-600"
                                 onClick={() => {
